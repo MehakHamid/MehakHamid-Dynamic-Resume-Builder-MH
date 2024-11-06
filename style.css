@@ -26,35 +26,34 @@ h2 {
     color: #333;
 }
 
-/* Input Fields */
-input[type="text"],
-input[type="date"],
-textarea,
-select {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    box-sizing: border-box;
+/* Left and Right Section Layout */
+#resume-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
 }
 
-textarea {
-    resize: vertical;
+.left-column,
+.right-column {
+    width: 48%;
 }
 
-input[type="checkbox"] {
-    margin-top: 10px;
-}
-
-/* Section Titles */
-section h3 {
+h3 {
     color: #333;
     font-size: 20px;
     margin-bottom: 10px;
 }
 
-/* Add More Buttons */
+p {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+/* Section Styling */
+section {
+    margin-bottom: 20px;
+}
+
 button {
     background-color: #5cb85c;
     color: white;
@@ -63,107 +62,22 @@ button {
     border-radius: 4px;
     cursor: pointer;
     font-size: 16px;
-    margin: 10px 0;
 }
 
 button:hover {
     background-color: #4cae4c;
 }
 
-/* Resume Styling */
-#resume-container {
-    width: 80%;
-    margin: 50px auto;
-    background-color: white;
-    padding: 30px;
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    display: none; /* Hidden initially */
-}
-
-#resume-name {
-    font-size: 30px;
-    font-weight: bold;
-    text-align: center;
-    margin-top: 20px;
-}
-
-#resume-summary {
-    font-size: 18px;
-    text-align: center;
-    margin-top: 10px;
-}
-
-.resume-section {
-    margin-top: 20px;
-}
-
-.resume-section h3 {
-    font-size: 24px;
-    color: #333;
-}
-
-.resume-section p {
-    font-size: 16px;
-    line-height: 1.5;
-}
-
-.resume-section div {
-    margin-bottom: 15px;
-}
-
-/* Form Sections Styling */
-#experience-inputs, 
-#education-inputs, 
-#skills-inputs, 
-#projects-inputs, 
-#certifications-inputs, 
-#awards-inputs, 
-#languages-inputs, 
-#interests-inputs {
-    margin-bottom: 20px;
-}
-
-.experience-entry,
-.education-entry,
-.skill-entry,
-.project-entry,
-.certification-entry,
-.award-entry,
-.language-entry,
-.interest-entry {
-    margin-bottom: 15px;
-    padding: 15px;
-    background-color: #f9f9f9;
-    border-radius: 4px;
-}
-
-.experience-entry input,
-.education-entry input,
-.skill-entry input,
-.project-entry input,
-.certification-entry input,
-.award-entry input,
-.language-entry input,
-.interest-entry input,
-.experience-entry textarea,
-.skill-entry textarea,
-.project-entry textarea {
-    margin-bottom: 10px;
-}
-
-.experience-entry input[type="checkbox"] {
-    margin-top: 10px;
-}
-
 /* Responsive Styling */
 @media (max-width: 768px) {
-    .container {
-        width: 95%;
+    #resume-container {
+        flex-direction: column;
+        align-items: center;
     }
 
-    #resume-container {
-        width: 95%;
+    .left-column,
+    .right-column {
+        width: 100%;
     }
 
     h1 {
@@ -172,17 +86,5 @@ button:hover {
 
     h2 {
         font-size: 20px;
-    }
-
-    #resume-name {
-        font-size: 24px;
-    }
-
-    #resume-summary {
-        font-size: 16px;
-    }
-
-    .resume-section p {
-        font-size: 14px;
     }
 }
