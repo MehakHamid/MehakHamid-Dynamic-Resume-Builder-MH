@@ -1,50 +1,52 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f9;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    background-color: #f9f9f9;
     margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
 }
 
-.resume {
-    width: 80%;
+.input-form, .resume-output {
+    width: 45%;
     background-color: #ffffff;
-    border-radius: 8px;
     padding: 20px;
+    border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-header h1 {
+.input-form h1, .resume-output h1 {
     text-align: center;
-    font-size: 24px;
-    margin-bottom: 5px;
-}
-
-.objective {
-    text-align: center;
-    font-size: 16px;
-    color: #555;
-}
-
-.content {
-    display: flex;
-    gap: 20px;
-}
-
-.left-column, .right-column {
-    flex: 1;
-}
-
-section {
     margin-bottom: 20px;
 }
 
-h2 {
-    font-size: 20px;
-    color: #333;
-    margin-bottom: 5px;
+label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+input[type="text"], input[type="email"], textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+button {
+    display: block;
+    margin-top: 10px;
+    padding: 10px 15px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
 }
 
 ul {
@@ -52,25 +54,7 @@ ul {
     padding: 0;
 }
 
-li {
-    margin-bottom: 5px;
+.resume-output h3 {
+    margin-top: 20px;
+    color: #333;
 }
-
-button {
-    padding: 8px 12px;
-    font-size: 14px;
-    cursor: pointer;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-}
-
-button:hover {
-    background-color: #45a049;
-}
-
-#education, #experience, #achievements {
-    background-color: #ffffff;
-}
-
