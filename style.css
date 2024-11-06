@@ -1,135 +1,73 @@
-/* General Styling */
 body {
     font-family: Arial, sans-serif;
-    margin: 25px;
-    padding: 0;
-    background-color: #b2d4fa;
-}
-
-.container {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-}
-h1{
-    font-size: 2.5em;
-    margin-bottom: 10px;
-    color: #212121;
-}
-h4{
-    margin-bottom: 10px;
-    color: #212121;
-    text-decoration: underline;
-    font-style: italic;
-    font-weight: bold;
-}
-span{
-    color: #0144fd;
-}
-
-/* Header */
-header {
-    text-align: center;
-    background-color: #fcfcfc;
-    color: rgb(19, 18, 18);
-    padding: 20px;
-}
-
-header input {
-    font-size: 1.2em;
-    text-align: center;
-    border: none;
-    background: none;
-    color: white;
-    width: 100%;
-}
-
-/* Layout: Left and Right Columns */
-.resume {
+    background-color: #f4f4f9;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
 }
 
-/* Left Side */
-.left-side {
-    width: 48%;
-    background-color: #ececec; /* Light blue for left side */
+.resume {
+    width: 80%;
+    background-color: #ffffff;
+    border-radius: 8px;
     padding: 20px;
-    position: relative;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.left-side::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 2px;
-    height: 100%;
-    background-color: #796c6c; /* Divider Line */
-}
-
-/* Right Side */
-.right-side {
-    width: 48%;
-    background-color: #f0efe5; /* Light yellow for right side */
-    padding: 20px;
-    position: relative;
-}
-
-.right-side::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 2px;
-    height: 100%;
-    background-color: #333; /* Divider Line */
-}
-
-/* Section Titles */
-h2 {
-    font-size: 1.5em;
-    margin-bottom: 10px;
-    border-bottom: 2px solid #020101;
-    padding-bottom: 5px;
-}
-
-/* Contact Info, Skills, and Languages */
-section {
-    margin-bottom: 20px;
-    
-}
-
-label {
-    display: block;
+header h1 {
+    text-align: center;
+    font-size: 24px;
     margin-bottom: 5px;
 }
 
-input, select {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 10px;
-    box-sizing: border-box;
+.objective {
+    text-align: center;
+    font-size: 16px;
+    color: #555;
 }
 
-/* Buttons */
+.content {
+    display: flex;
+    gap: 20px;
+}
+
+.left-column, .right-column {
+    flex: 1;
+}
+
+section {
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 5px;
+}
+
 button {
-    background-color: #333;
+    padding: 8px 12px;
+    font-size: 14px;
+    cursor: pointer;
+    background-color: #4CAF50;
     color: white;
     border: none;
-    padding: 10px;
-    border-radius: 8px;
-    cursor: pointer;
+    border-radius: 5px;
 }
 
 button:hover {
-    background-color: #555;
-}
-
-/* Specific Section Styling */
-#contact-info, #skills, #languages {
-    background-color: #ffffff;
+    background-color: #45a049;
 }
 
 #education, #experience, #achievements {
