@@ -1,60 +1,188 @@
+/* General Layout */
 body {
     font-family: Arial, sans-serif;
     background-color: #f9f9f9;
     margin: 0;
-    padding: 20px;
-    display: flex;
-    justify-content: space-between;
-}
-
-.input-form, .resume-output {
-    width: 45%;
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.input-form h1, .resume-output h1 {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-label {
-    display: block;
-    margin-top: 10px;
-    font-weight: bold;
-}
-
-input[type="text"], input[type="email"], textarea {
-    width: 100%;
-    padding: 8px;
-    margin-top: 5px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-}
-
-button {
-    display: block;
-    margin-top: 10px;
-    padding: 10px 15px;
-    background-color: #4CAF50;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #45a049;
-}
-
-ul {
-    list-style: none;
     padding: 0;
 }
 
-.resume-output h3 {
-    margin-top: 20px;
+/* Container for the whole form */
+.container {
+    width: 80%;
+    margin: 50px auto;
+    background-color: white;
+    padding: 30px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+h1 {
+    text-align: center;
     color: #333;
+    margin-bottom: 20px;
+}
+
+h2 {
+    color: #333;
+}
+
+/* Input Fields */
+input[type="text"],
+input[type="date"],
+textarea,
+select {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+textarea {
+    resize: vertical;
+}
+
+input[type="checkbox"] {
+    margin-top: 10px;
+}
+
+/* Section Titles */
+section h3 {
+    color: #333;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+/* Add More Buttons */
+button {
+    background-color: #5cb85c;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+button:hover {
+    background-color: #4cae4c;
+}
+
+/* Resume Styling */
+#resume-container {
+    width: 80%;
+    margin: 50px auto;
+    background-color: white;
+    padding: 30px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    display: none; /* Hidden initially */
+}
+
+#resume-name {
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 20px;
+}
+
+#resume-summary {
+    font-size: 18px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.resume-section {
+    margin-top: 20px;
+}
+
+.resume-section h3 {
+    font-size: 24px;
+    color: #333;
+}
+
+.resume-section p {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.resume-section div {
+    margin-bottom: 15px;
+}
+
+/* Form Sections Styling */
+#experience-inputs, 
+#education-inputs, 
+#skills-inputs, 
+#projects-inputs, 
+#certifications-inputs, 
+#awards-inputs, 
+#languages-inputs, 
+#interests-inputs {
+    margin-bottom: 20px;
+}
+
+.experience-entry,
+.education-entry,
+.skill-entry,
+.project-entry,
+.certification-entry,
+.award-entry,
+.language-entry,
+.interest-entry {
+    margin-bottom: 15px;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+}
+
+.experience-entry input,
+.education-entry input,
+.skill-entry input,
+.project-entry input,
+.certification-entry input,
+.award-entry input,
+.language-entry input,
+.interest-entry input,
+.experience-entry textarea,
+.skill-entry textarea,
+.project-entry textarea {
+    margin-bottom: 10px;
+}
+
+.experience-entry input[type="checkbox"] {
+    margin-top: 10px;
+}
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+    }
+
+    #resume-container {
+        width: 95%;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    #resume-name {
+        font-size: 24px;
+    }
+
+    #resume-summary {
+        font-size: 16px;
+    }
+
+    .resume-section p {
+        font-size: 14px;
+    }
 }
