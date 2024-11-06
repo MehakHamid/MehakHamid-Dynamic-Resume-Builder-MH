@@ -1,160 +1,255 @@
-// Function to add a new experience entry
-function addExperience(): void {
-    const container = document.createElement("div");
-    container.classList.add("experience-entry");
-    container.innerHTML = `
-        <input type="text" placeholder="Job Title" class="experience-title">
-        <input type="text" placeholder="Company Name" class="experience-company">
-        <input type="date" placeholder="Start Date" class="experience-start">
-        <input type="date" placeholder="End Date" class="experience-end">
-        <textarea placeholder="Job Description" class="experience-description"></textarea>
-        <textarea placeholder="Key Achievements" class="experience-achievements"></textarea>
-        <input type="text" placeholder="Skills Used" class="experience-skills">
-    `;
-    document.getElementById("experience-inputs")?.appendChild(container);
+interface PersonalInfo {
+    name: string;
+    email: string;
+    phone: string;
+    address: string;
+    linkedin: string;
+    website: string;
+    summary: string;
 }
 
-// Function to add a new education entry
-function addEducation(): void {
-    const container = document.createElement("div");
-    container.classList.add("education-entry");
-    container.innerHTML = `
-        <input type="text" placeholder="Degree Name" class="education-degree">
-        <input type="text" placeholder="Institution Name" class="education-institution">
-        <input type="date" placeholder="End Date" class="education-end-date">
-    `;
-    document.getElementById("education-inputs")?.appendChild(container);
+interface Experience {
+    jobTitle: string;
+    company: string;
+    location: string;
+    startDate: string;
+    endDate: string;
+    description: string[];
+    achievements: string[];
+    skillsUsed: string[];
 }
 
-// Function to add a new skill entry
-function addSkill(): void {
-    const container = document.createElement("div");
-    container.classList.add("skill-entry");
-    container.innerHTML = `
-        <input type="text" placeholder="Skill Name" class="skill-name">
-        <select class="skill-level">
-            <option value="beginner">Beginner</option>
-            <option value="intermediate">Intermediate</option>
-            <option value="advanced">Advanced</option>
-        </select>
-        <input type="text" placeholder="Certification (if applicable)" class="skill-certification">
-    `;
-    document.getElementById("skills-inputs")?.appendChild(container);
+interface Education {
+    degree: string;
+    field: string;
+    institution: string;
+    endDate: string;
 }
 
-// Function to add a new project entry
-function addProject(): void {
-    const container = document.createElement("div");
-    container.classList.add("project-entry");
-    container.innerHTML = `
-        <input type="text" placeholder="Project Title" class="project-title">
-        <textarea placeholder="Description" class="project-description"></textarea>
-        <input type="text" placeholder="Technologies Used" class="project-technologies">
-        <input type="text" placeholder="Role in Project" class="project-role">
-        <input type="text" placeholder="Link to Project (if applicable)" class="project-link">
-    `;
-    document.getElementById("projects-inputs")?.appendChild(container);
+interface Skill {
+    name: string;
+    level: 'beginner' | 'intermediate' | 'advanced';
+    certification?: string;
 }
 
-// Function to add a new certification entry
-function addCertification(): void {
-    const container = document.createElement("div");
-    container.classList.add("certification-entry");
-    container.innerHTML = `
-        <input type="text" placeholder="Certification Name" class="certification-name">
-        <input type="text" placeholder="Certifying Organization" class="certification-organization">
-        <input type="date" placeholder="Date Obtained" class="certification-date">
-    `;
-    document.getElementById("certifications-inputs")?.appendChild(container);
+interface Project {
+    title: string;
+    description: string;
+    technologies: string[];
+    role: string;
+    link?: string;
 }
 
-// Function to add a new award entry
-function addAward(): void {
-    const container = document.createElement("div");
-    container.classList.add("award-entry");
-    container.innerHTML = `
-        <input type="text" placeholder="Award/Honor Name" class="award-name">
-        <input type="text" placeholder="Awarding Organization" class="award-organization">
-        <input type="date" placeholder="Date Received" class="award-date">
-    `;
-    document.getElementById("awards-inputs")?.appendChild(container);
+interface Certification {
+    name: string;
+    organization: string;
+    dateObtained: string;
 }
 
-// Function to add a new language entry
-function addLanguage(): void {
-    const container = document.createElement("div");
-    container.classList.add("language-entry");
-    container.innerHTML = `
-        <input type="text" placeholder="Language Name" class="language-name">
-        <select class="language-proficiency">
-            <option value="fluent">Fluent</option>
-            <option value="conversational">Conversational</option>
-            <option value="basic">Basic</option>
-        </select>
-    `;
-    document.getElementById("languages-inputs")?.appendChild(container);
+interface Award {
+    name: string;
+    organization: string;
+    dateReceived: string;
 }
 
-// Function to add a new interest entry
-function addInterest(): void {
-    const container = document.createElement("div");
-    container.classList.add("interest-entry");
-    container.innerHTML = `
-        <input type="text" placeholder="Interest" class="interest-name">
-    `;
-    document.getElementById("interests-inputs")?.appendChild(container);
+interface Language {
+    name: string;
+    proficiency: 'basic' | 'conversational' | 'fluent';
 }
 
-// Function to generate the resume display
-function generateResume(): void {
-    // Info Section
-    const name = (document.getElementById("name") as HTMLInputElement).value;
-    const email = (document.getElementById("email") as HTMLInputElement).value;
-    const phone = (document.getElementById("phone") as HTMLInputElement).value;
-    const address = (document.getElementById("address") as HTMLInputElement).value;
-    const linkedin = (document.getElementById("linkedin") as HTMLInputElement).value;
-    const website = (document.getElementById("website") as HTMLInputElement).value;
-    const summary = (document.getElementById("summary") as HTMLTextAreaElement).value;
+interface Interest {
+    name: string;
+}
 
-    // Set Name and Summary
-    document.getElementById("resume-name")!.textContent = name;
-    document.getElementById("resume-summary")!.textContent = summary;
+class ResumeBuilder {
+    private form: HTMLFormElement;
+    private preview: HTMLDivElement;
 
-    // Experience Section
-    const experienceInputs = document.querySelectorAll(".experience-entry");
-    const experienceSection = document.createElement("section");
-    experienceSection.innerHTML = "<h3>Experience</h3>";
-    experienceInputs.forEach(exp => {
-        const title = (exp.querySelector(".experience-title") as HTMLInputElement).value;
-        const company = (exp.querySelector(".experience-company") as HTMLInputElement).value;
-        const start = (exp.querySelector(".experience-start") as HTMLInputElement).value;
-        const end = (exp.querySelector(".experience-end") as HTMLInputElement).value;
-        const description = (exp.querySelector(".experience-description") as HTMLTextAreaElement).value;
-        const achievements = (exp.querySelector(".experience-achievements") as HTMLTextAreaElement).value;
-        const skills = (exp.querySelector(".experience-skills") as HTMLInputElement).value;
+    constructor() {
+        this.form = document.getElementById('resumeForm') as HTMLFormElement;
+        this.preview = document.getElementById('resumePreview') as HTMLDivElement;
+        this.initializeEventListeners();
+    }
+
+    private initializeEventListeners(): void {
+        // Add section buttons
+        document.querySelectorAll('.add-btn').forEach(button => {
+            button.addEventListener('click', (e) => {
+                const section = (e.target as HTMLElement).dataset.section;
+                if (section) this.addSection(section);
+            });
+        });
+
+        // Form submission
+        this.form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            this.generateResume();
+        });
+    }
+
+    private addSection(section: string): void {
+        const container = document.getElementById(`${section}Container`);
+        if (!container) return;
+
+        const sectionItem = document.createElement('div');
+        sectionItem.className = 'section-item';
+
+        // Create section-specific fields
+        const fields = this.createSectionFields(section);
+        sectionItem.innerHTML = fields;
+
+        // Add remove button
+        const removeBtn = document.createElement('button');
+        removeBtn.className = 'remove-btn';
+        removeBtn.textContent = 'Remove';
+        removeBtn.onclick = () => sectionItem.remove();
+        sectionItem.appendChild(removeBtn);
+
+        container.appendChild(sectionItem);
+    }
+
+    private createSectionFields(section: string): string {
+        switch (section) {
+            case 'experience':
+                return `
+                    <div class="grid-2">
+                        <input type="text" placeholder="Job Title" required>
+                        <input type="text" placeholder="Company" required>
+                        <input type="text" placeholder="Location">
+                        <input type="date" placeholder="Start Date">
+                        <input type="date" placeholder="End Date">
+                    </div>
+                    <textarea placeholder="Description"></textarea>
+                `;
+            case 'education':
+                return `
+                    <div class="grid-2">
+                        <input type="text" placeholder="Degree" required>
+                        <input type="text" placeholder="Field of Study" required>
+                        <input type="text" placeholder="Institution" required>
+                        <input type="date" placeholder="End Date">
+                    </div>
+                `;
+            case 'skills':
+                return `
+                    <div class="grid-2">
+                        <input type="text" placeholder="Skill Name" required>
+                        <select required>
+                            <option value="beginner">Beginner</option>
+                            <option value="intermediate">Intermediate</option>
+                            <option value="advanced">Advanced</option>
+                        </select>
+                    </div>
+                `;
+            // Add other section templates
+            default:
+                return '';
+        }
+    }
+
+    private generateResume(): void {
+        const formData = new FormData(this.form);
+        const resumeData = {
+            personalInfo: this.getPersonalInfo(formData),
+            experiences: this.getExperiences(),
+            education: this.getEducation(),
+            skills: this.getSkills(),
+            // Add other sections
+        };
+
+        this.updatePreview(resumeData);
+    }
+
+    private getPersonalInfo(formData: FormData): PersonalInfo {
+        return {
+            name: formData.get('name') as string || '',
+            email: formData.get('email') as string || '',
+            phone: formData.get('phone') as string || '',
+            address: formData.get('address') as string || '',
+            linkedin: formData.get('linkedin') as string || '',
+            website: formData.get('website') as string || '',
+            summary: formData.get('summary') as string || ''
+        };
+    }
+
+    private getExperiences(): Experience[] {
+        const experiences: Experience[] = [];
+        const experienceItems = document.querySelectorAll('#experienceContainer .section-item');
         
-        const expDiv = document.createElement("div");
-        expDiv.innerHTML = `<p><strong>${title}</strong> at ${company} (${start} - ${end})</p><p>${description}</p><p>Achievements: ${achievements}</p><p>Skills Used: ${skills}</p>`;
-        experienceSection.appendChild(expDiv);
-    });
-    document.getElementById("resume-sections")?.appendChild(experienceSection);
+        experienceItems.forEach(item => {
+            const inputs = item.querySelectorAll('input');
+            const textarea = item.querySelector('textarea');
+            
+            experiences.push({
+                jobTitle: inputs[0].value,
+                company: inputs[1].value,
+                location: inputs[2].value,
+                startDate: inputs[3].value,
+                endDate: inputs[4].value,
+                description: textarea ? [textarea.value] : [],
+                achievements: [],
+                skillsUsed: []
+            });
+        });
 
-    // Education, Skills, Projects, Certifications, Awards, Languages, and Interests Sections
-    // Repeat similar structure as above for each of these sections...
+        return experiences;
+    }
 
-    // Append completed sections to display area
-    document.getElementById("resume-sections")!.innerHTML = "";
-    document.getElementById("resume-sections")!.appendChild(experienceSection);
-    // ... Append other sections similarly
+    private getEducation(): Education[] {
+        const education: Education[] = [];
+        const educationItems = document.querySelectorAll('#educationContainer .section-item');
+        
+        educationItems.forEach(item => {
+            const inputs = item.querySelectorAll('input');
+            
+            education.push({
+                degree: inputs[0].value,
+                field: inputs[1].value,
+                institution: inputs[2].value,
+                endDate: inputs[3].value
+            });
+        });
+
+        return education;
+    }
+
+    private getSkills(): Skill[] {
+        const skills: Skill[] = [];
+        const skillItems = document.querySelectorAll('#skillsContainer .section-item');
+        
+        skillItems.forEach(item => {
+            const input = item.querySelector('input');
+            const select = item.querySelector('select');
+            
+            if (input && select) {
+                skills.push({
+                    name: input.value,
+                    level: select.value as 'beginner' | 'intermediate' | 'advanced'
+                });
+            }
+        });
+
+        return skills;
+    }
+
+    private updatePreview(data: any): void {
+        const previewContent = document.querySelector('.preview-content');
+        if (!previewContent) return;
+
+        previewContent.innerHTML = `
+            <h1>${data.personalInfo.name}</h1>
+            <div class="contact-info">
+                ${data.personalInfo.email} | ${data.personalInfo.phone} | ${data.personalInfo.address}
+            </div>
+            <div class="summary">
+                ${data.personalInfo.summary}
+            </div>
+            <!-- Add other sections -->
+        `;
+    }
 }
 
-// Add Event Listeners for "Add More" Buttons
-document.querySelector("#experience-section button")?.addEventListener("click", addExperience);
-document.querySelector("#education-section button")?.addEventListener("click", addEducation);
-document.querySelector("#skills-section button")?.addEventListener("click", addSkill);
-document.querySelector("#projects-section button")?.addEventListener("click", addProject);
-document.querySelector("#certifications-section button")?.addEventListener("click", addCertification);
-document.querySelector("#awards-section button")?.addEventListener("click", addAward);
-document.querySelector("#languages-section button")?.addEventListener("click", addLanguage);
-document.querySelector("#interests-section button")?.addEventListener("click", addInterest);
-document.getElementById("generate-resume")?.addEventListener("click", generateResume);
+// Initialize the app
+document.addEventListener('DOMContentLoaded', () => {
+    new ResumeBuilder();
+});
