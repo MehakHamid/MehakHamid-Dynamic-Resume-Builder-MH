@@ -3,63 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
     <title>Dynamic Resume Builder</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="input-form">
-        <h1>Resume Builder</h1>
-        <label for="name">Name:</label>
-        <input type="text" id="name" placeholder="Your name">
+    <div class="resume-form">
+        <h2>Build Your Resume</h2>
+        <!-- Info Section -->
+        <section id="info-section">
+            <h3>Info</h3>
+            <input type="text" id="name" placeholder="Name" required>
+            <input type="email" id="email" placeholder="Email" required>
+            <input type="text" id="phone" placeholder="Phone number" required>
+            <input type="text" id="address" placeholder="Address">
+            <input type="text" id="linkedin" placeholder="LinkedIn profile link">
+            <input type="text" id="website" placeholder="Personal website link">
+            <textarea id="summary" placeholder="Professional Summary / Objective"></textarea>
+        </section>
 
-        <label for="email">Email:</label>
-        <input type="email" id="email" placeholder="Your email">
+        <!-- Experience Section -->
+        <section id="experience-section">
+            <h3>Experience</h3>
+            <div id="experience-inputs"></div>
+            <button onclick="addExperience()">Add More Experience</button>
+        </section>
 
-        <label for="address">Address:</label>
-        <textarea id="address" placeholder="Your address"></textarea>
+        <!-- Education Section -->
+        <section id="education-section">
+            <h3>Education</h3>
+            <div id="education-inputs"></div>
+            <button onclick="addEducation()">Add More Education</button>
+        </section>
 
-        <h3>Skills</h3>
-        <div id="skills-inputs"></div>
-        <button onclick="addSkill()">Add Skill</button>
+        <!-- Skills Section -->
+        <section id="skills-section">
+            <h3>Skills</h3>
+            <div id="skills-inputs"></div>
+            <button onclick="addSkill()">Add More Skills</button>
+        </section>
 
-        <h3>Languages</h3>
-        <div id="languages-inputs"></div>
-        <button onclick="addLanguage()">Add Language</button>
+        <!-- Projects Section -->
+        <section id="projects-section">
+            <h3>Projects</h3>
+            <div id="projects-inputs"></div>
+            <button onclick="addProject()">Add More Projects</button>
+        </section>
 
-        <h3>Achievements</h3>
-        <div id="achievements-inputs"></div>
-        <button onclick="addAchievement()">Add Achievement</button>
+        <!-- Certifications Section -->
+        <section id="certifications-section">
+            <h3>Certifications</h3>
+            <div id="certifications-inputs"></div>
+            <button onclick="addCertification()">Add More Certifications</button>
+        </section>
 
-        <h3>Education</h3>
-        <div id="education-inputs"></div>
-        <button onclick="addEducation()">Add Education</button>
+        <!-- Awards and Honors Section -->
+        <section id="awards-section">
+            <h3>Awards and Honors</h3>
+            <div id="awards-inputs"></div>
+            <button onclick="addAward()">Add More Awards</button>
+        </section>
 
-        <h3>Projects</h3>
-        <div id="projects-inputs"></div>
-        <button onclick="addProject()">Add Project</button>
+        <!-- Languages Section -->
+        <section id="languages-section">
+            <h3>Languages</h3>
+            <div id="languages-inputs"></div>
+            <button onclick="addLanguage()">Add More Languages</button>
+        </section>
+
+        <!-- Interests Section -->
+        <section id="interests-section">
+            <h3>Interests</h3>
+            <div id="interests-inputs"></div>
+            <button onclick="addInterest()">Add More Interests</button>
+        </section>
 
         <button onclick="generateResume()">Generate Resume</button>
     </div>
 
-    <div class="resume-output" id="resume-output">
+    <!-- Generated Resume Display -->
+    <div class="resume-display" id="resume-display">
         <h1 id="resume-name"></h1>
-        <p id="resume-email"></p>
-        <p id="resume-address"></p>
-
-        <h3>Skills</h3>
-        <ul id="resume-skills"></ul>
-
-        <h3>Languages</h3>
-        <ul id="resume-languages"></ul>
-
-        <h3>Achievements</h3>
-        <ul id="resume-achievements"></ul>
-
-        <h3>Education</h3>
-        <ul id="resume-education"></ul>
-
-        <h3>Projects</h3>
-        <ul id="resume-projects"></ul>
+        <p id="resume-summary"></p>
+        <div id="resume-sections"></div>
     </div>
 
     <script src="script.js"></script>
