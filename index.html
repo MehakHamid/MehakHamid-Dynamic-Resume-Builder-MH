@@ -1,104 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Resume Builder</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Professional Resume</title>
 </head>
 <body>
-  <div class="container">
-    <header>
-        <h1>Resume Builder</h1>
-        <h4>Created by <span><strong>Mehak Hamid</strong></span></h4>
-        <label for="name">Full Name</label>
-      <input type="text" id="name" placeholder="Enter Your Full name">
-    </header>
-
     <div class="resume">
-      <div class="left-side">
-        <section id="contact-info">
-          <h2>Contact Information</h2>
-          <form id="contact-form">
-            <label for="email">Email:</label>
-            <input type="email" id="email" required><br><br>
-            
-            <label for="contact-number">Contact Number:</label>
-            <input type="tel" id="contact-number" required><br><br>
-            
-            <label for="address">Address:</label>
-            <input type="text" id="address" required>
-          </form>
-        </section>
+        <header>
+            <h1>Mehak Hamid</h1>
+            <p class="objective">Analytical thinker and proactive problem solver with a knack for identifying inefficiencies and implementing effective solutions.</p>
+        </header>
+        <div class="content">
+            <div class="left-column">
+                <section class="personal-info">
+                    <h2>Personal Information</h2>
+                    <p><strong>Name:</strong> Mehak Hamid</p>
+                    <p><strong>NIC:</strong> 42301-0798537-4</p>
+                    <p><strong>Email:</strong> mehakhamid81@gmail.com</p>
+                    <p><strong>Address:</strong> House # 235 bukshan village,<br> Gizri, Karachi</p>
+                </section>
 
-        <section id="skills">
-          <h2>Skills</h2>
-          <div id="skills-list">
-            <input type="text" placeholder="Skill" required>
-          </div>
-          <button id="add-skill">Add Another Skill</button>
-        </section>
+                <section class="skills">
+                    <h2>Skills</h2>
+                    <ul id="skills-list">
+                        <li>HTML, CSS</li>
+                        <li>JavaScript, TypeScript</li>
+                    </ul>
+                    <button onclick="addSkill()">Add More Skill</button>
+                </section>
 
-        <section id="languages">
-          <h2>Languages</h2>
-          <div id="languages-list">
-            <input type="text" placeholder="Language" required>
-          </div>
-          <button id="add-language">Add Another Language</button>
-        </section>
-      </div>
+                <section class="languages">
+                    <h2>Languages</h2>
+                    <ul id="languages-list">
+                        <li>English</li>
+                        <li>Urdu</li>
+                    </ul>
+                    <button onclick="addLanguage()">Add More Language</button>
+                </section>
 
-      <div class="right-side">
-        <section id="education">
-          <h2>Education</h2>
-          <div id="education-list">
-            <input type="text" placeholder="Degree Name" required>
-            <input type="text" placeholder="Field" required>
-            <input type="text" placeholder="Completion Year" required>
-          </div>
-          <button id="add-education">Add Another Education</button>
-        </section>
-
-        <section id="experience">
-            <h2>Experience</h2>
-            <label for="experience-select">Experience:</label>
-            <select id="experience-select" required>
-              <option value="fresh">Fresh</option>
-              <option value="experienced">Experienced</option>
-            </select>
-          
-            <div id="experienced-section" style="display: none;">
-              <div class="experience-group">
-                <input type="text" class="company-name" placeholder="Company Name">
-                <input type="text" class="position" placeholder="Position">
-                <label>
-                  <input type="checkbox" class="currently-working"> Currently Working Here
-                </label>
-                <input type="number" class="experience-years" placeholder="Experience (Years)">
-              </div>
+                <section class="achievements">
+                    <h2>Achievements</h2>
+                    <ul id="achievements-list">
+                        <li>Network Coordinator Award</li>
+                        <li>UI / UX Designer Certificate</li>
+                    </ul>
+                    <button onclick="addAchievement()">Add More Achievement</button>
+                </section>
             </div>
-          
-            <!-- Add Another Button -->
-            <button id="add-experience">Add Another Experience</button>
-          </section>
-          
-          
-          
 
-        <section id="achievements">
-          <h2>Achievements</h2>
-          <div id="achievement-list">
-            <input type="text" placeholder="Achievement">
-          </div>
-          <button id="add-achievement">Add Another Achievement</button>
-        </section>
-      
-        <button id="generate-resume">Generate Resume</button>
+            <div class="right-column">
+                <section class="education">
+                    <h2>Education</h2>
+                    <ul id="education-list">
+                        <li><strong>Matric</strong> - Science (Passing Year: 2016)</li>
+                        <li><strong>Intermediate</strong> - Commerce (Passing Year: 2019)</li>
+                        <li><strong>Graduation</strong> - B.COM (Passing Year: 2022)</li>
+                    </ul>
+                    <button onclick="addEducation()">Add More Education</button>
+                </section>
 
-      </div>
+                <section class="projects">
+                    <h2>Projects</h2>
+                    <ul id="projects-list">
+                        <li>Portfolio Website</li>
+                    </ul>
+                    <button onclick="addProject()">Add More Project</button>
+                </section>
+            </div>
+        </div>
     </div>
-  </div>
 
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
