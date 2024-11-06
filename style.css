@@ -1,36 +1,7 @@
-/* General Layout */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f9f9f9;
-    margin: 0;
-    padding: 0;
-}
-
-/* Container for the whole form */
-.container {
-    width: 80%;
-    margin: 50px auto;
-    background-color: white;
-    padding: 30px;
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-}
-
-h1 {
-    text-align: center;
-    color: #333;
-    margin-bottom: 20px;
-}
-
-h2 {
-    color: #333;
-}
-
-/* Left and Right Section Layout */
 #resume-container {
     display: flex;
     justify-content: space-between;
-    margin-top: 20px;
+    margin: 20px;
 }
 
 .left-column,
@@ -38,53 +9,42 @@ h2 {
     width: 48%;
 }
 
-h3 {
+h1, h3 {
     color: #333;
-    font-size: 20px;
     margin-bottom: 10px;
 }
 
-p {
-    font-size: 16px;
-    line-height: 1.5;
+h3 {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 5px;
 }
 
-/* Section Styling */
 section {
     margin-bottom: 20px;
 }
 
+input, textarea {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
 button {
-    background-color: #5cb85c;
-    color: white;
     padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
     border: none;
-    border-radius: 4px;
+    border-radius: 5px;
     cursor: pointer;
-    font-size: 16px;
 }
 
 button:hover {
-    background-color: #4cae4c;
+    background-color: #45a049;
 }
 
-/* Responsive Styling */
-@media (max-width: 768px) {
-    #resume-container {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .left-column,
-    .right-column {
-        width: 100%;
-    }
-
-    h1 {
-        font-size: 24px;
-    }
-
-    h2 {
-        font-size: 20px;
-    }
+.add-more-buttons {
+    margin-top: 20px;
 }
