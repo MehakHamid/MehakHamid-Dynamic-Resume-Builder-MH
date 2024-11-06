@@ -1,15 +1,92 @@
-// Add an event listener to the "Generate Resume" button
+// Add event listeners for "Add More" buttons and the "Generate Resume" button
 document.getElementById("generate-resume").addEventListener("click", generateResume);
 
+// For dynamically adding new skills, experience, education, etc.
+document.getElementById("add-skill").addEventListener("click", addSkill);
+document.getElementById("add-experience").addEventListener("click", addExperience);
+document.getElementById("add-education").addEventListener("click", addEducation);
+document.getElementById("add-language").addEventListener("click", addLanguage);
+document.getElementById("add-interest").addEventListener("click", addInterest);
+document.getElementById("add-award").addEventListener("click", addAward);
+
+function addSkill() {
+    const skillContainer = document.getElementById("skills-container");
+    const skillHTML = `
+        <div class="skill-entry">
+            <input type="text" class="skill-name" placeholder="Skill Name" required>
+            <input type="text" class="skill-level" placeholder="Skill Level (e.g., Beginner, Intermediate, Advanced)" required>
+        </div>
+    `;
+    skillContainer.insertAdjacentHTML("beforeend", skillHTML);
+}
+
+function addExperience() {
+    const experienceContainer = document.getElementById("experience-container");
+    const experienceHTML = `
+        <div class="experience-entry">
+            <input type="text" class="job-title" placeholder="Job Title" required>
+            <input type="text" class="company-name" placeholder="Company Name" required>
+            <input type="date" class="start-date" placeholder="Start Date" required>
+            <input type="date" class="end-date" placeholder="End Date">
+            <textarea class="job-description" placeholder="Job Description" required></textarea>
+        </div>
+    `;
+    experienceContainer.insertAdjacentHTML("beforeend", experienceHTML);
+}
+
+function addEducation() {
+    const educationContainer = document.getElementById("education-container");
+    const educationHTML = `
+        <div class="education-entry">
+            <input type="text" class="degree-name" placeholder="Degree Name" required>
+            <input type="text" class="institution-name" placeholder="Institution Name" required>
+            <input type="date" class="end-date" placeholder="Graduation Year" required>
+        </div>
+    `;
+    educationContainer.insertAdjacentHTML("beforeend", educationHTML);
+}
+
+function addLanguage() {
+    const languageContainer = document.getElementById("language-container");
+    const languageHTML = `
+        <div class="language-entry">
+            <input type="text" class="language-name" placeholder="Language Name" required>
+            <input type="text" class="language-proficiency" placeholder="Proficiency Level (e.g., Fluent, Conversational)" required>
+        </div>
+    `;
+    languageContainer.insertAdjacentHTML("beforeend", languageHTML);
+}
+
+function addInterest() {
+    const interestContainer = document.getElementById("interest-container");
+    const interestHTML = `
+        <div class="interest-entry">
+            <input type="text" class="interest-name" placeholder="Interest Name" required>
+        </div>
+    `;
+    interestContainer.insertAdjacentHTML("beforeend", interestHTML);
+}
+
+function addAward() {
+    const awardContainer = document.getElementById("award-container");
+    const awardHTML = `
+        <div class="award-entry">
+            <input type="text" class="award-name" placeholder="Award/Honor Name" required>
+            <input type="text" class="award-organization" placeholder="Awarding Organization" required>
+            <input type="date" class="award-date" placeholder="Date Received" required>
+        </div>
+    `;
+    awardContainer.insertAdjacentHTML("beforeend", awardHTML);
+}
+
 function generateResume() {
-    // Clear any previous resume content
+    // Clear previous resume content
     const resumeContainer = document.getElementById("resume-container");
     resumeContainer.innerHTML = "";
-    
-    // Collect data
+
     const name = document.getElementById("name").value;
     const summary = document.getElementById("summary").value;
-    
+
     // Check if Name and Summary are filled
     if (name && summary) {
         const resumeName = document.createElement("h1");
@@ -124,32 +201,30 @@ function generateResume() {
             const startDate = exp.querySelector(".start-date").value;
             const endDate = exp.querySelector(".end-date").value;
             const jobDescription = exp.querySelector(".job-description").value;
-            if (jobTitle && companyName && startDate && jobDescription) {
-                experienceSection.innerHTML += `<p><strong>${jobTitle}</strong> at ${companyName} (${startDate} - ${endDate ? endDate : "Present"})</p>`;
-                experienceSection.innerHTML += `<p>${jobDescription}</p>`;
+            if (jobTitle && companyName && jobDescription) {
+                experienceSection.innerHTML += `<p>${jobTitle} at ${companyName} (${startDate} - ${endDate})</p><p>${jobDescription}</p>`;
             }
         });
         rightSection.appendChild(experienceSection);
     }
 
-    // Certification Section
+    // Certifications Section
     const certificationInputs = document.querySelectorAll(".certification-entry");
-    const certificationsSection = document.createElement("section");
+    const certificationSection = document.createElement("section");
     if (certificationInputs.length > 0) {
-        certificationsSection.innerHTML = "<h3>Certifications</h3>";
+        certificationSection.innerHTML = "<h3>Certifications</h3>";
         certificationInputs.forEach(cert => {
             const certName = cert.querySelector(".certification-name").value;
-            const certOrganization = cert.querySelector(".certifying-organization").value;
+            const certOrganization = cert.querySelector(".certification-organization").value;
             const certDate = cert.querySelector(".certification-date").value;
             if (certName && certOrganization && certDate) {
-                certificationsSection.innerHTML += `<p>${certName} from ${certOrganization} (Obtained: ${certDate})</p>`;
+                certificationSection.innerHTML += `<p>${certName} - ${certOrganization} (Obtained: ${certDate})</p>`;
             }
         });
-        rightSection.appendChild(certificationsSection);
+        rightSection.appendChild(certificationSection);
     }
 
-    // Append left and right sections to the container
+    // Append sections to resume
     resumeContainer.appendChild(leftSection);
     resumeContainer.appendChild(rightSection);
-    resumeContainer.style.display = "block";
 }
