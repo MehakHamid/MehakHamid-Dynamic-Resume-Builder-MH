@@ -1,34 +1,86 @@
 function addSkill(): void {
-    const skillList = document.getElementById('skills-list');
-    const newSkill = document.createElement('li');
-    newSkill.innerHTML = `<input type="text" placeholder="Enter a new skill" />`;
-    skillList?.appendChild(newSkill);
+    const skillInput = document.createElement("input");
+    skillInput.type = "text";
+    skillInput.placeholder = "Enter a skill";
+    document.getElementById("skills-inputs")?.appendChild(skillInput);
 }
 
 function addLanguage(): void {
-    const languageList = document.getElementById('languages-list');
-    const newLanguage = document.createElement('li');
-    newLanguage.innerHTML = `<input type="text" placeholder="Enter a new language" />`;
-    languageList?.appendChild(newLanguage);
+    const languageInput = document.createElement("input");
+    languageInput.type = "text";
+    languageInput.placeholder = "Enter a language";
+    document.getElementById("languages-inputs")?.appendChild(languageInput);
 }
 
 function addAchievement(): void {
-    const achievementList = document.getElementById('achievements-list');
-    const newAchievement = document.createElement('li');
-    newAchievement.innerHTML = `<input type="text" placeholder="Enter a new achievement" />`;
-    achievementList?.appendChild(newAchievement);
+    const achievementInput = document.createElement("input");
+    achievementInput.type = "text";
+    achievementInput.placeholder = "Enter an achievement";
+    document.getElementById("achievements-inputs")?.appendChild(achievementInput);
 }
 
 function addEducation(): void {
-    const educationList = document.getElementById('education-list');
-    const newEducation = document.createElement('li');
-    newEducation.innerHTML = `<input type="text" placeholder="Degree" /> - <input type="text" placeholder="Field of Study" /> (Passing Year: <input type="text" placeholder="Year" />)`;
-    educationList?.appendChild(newEducation);
+    const educationInput = document.createElement("input");
+    educationInput.type = "text";
+    educationInput.placeholder = "Enter education detail";
+    document.getElementById("education-inputs")?.appendChild(educationInput);
 }
 
 function addProject(): void {
-    const projectList = document.getElementById('projects-list');
-    const newProject = document.createElement('li');
-    newProject.innerHTML = `<input type="text" placeholder="Enter a new project" />`;
-    projectList?.appendChild(newProject);
+    const projectInput = document.createElement("input");
+    projectInput.type = "text";
+    projectInput.placeholder = "Enter a project";
+    document.getElementById("projects-inputs")?.appendChild(projectInput);
+}
+
+function generateResume(): void {
+    // Collect user info
+    (document.getElementById("resume-name") as HTMLElement).textContent = (document.getElementById("name") as HTMLInputElement).value;
+    (document.getElementById("resume-email") as HTMLElement).textContent = "Email: " + (document.getElementById("email") as HTMLInputElement).value;
+    (document.getElementById("resume-address") as HTMLElement).textContent = "Address: " + (document.getElementById("address") as HTMLInputElement).value;
+
+    // Collect and display skills
+    const skillsList = document.getElementById("resume-skills");
+    skillsList!.innerHTML = "";
+    Array.from(document.getElementById("skills-inputs")!.children).forEach((input: Element) => {
+        const li = document.createElement("li");
+        li.textContent = (input as HTMLInputElement).value;
+        skillsList?.appendChild(li);
+    });
+
+    // Collect and display languages
+    const languagesList = document.getElementById("resume-languages");
+    languagesList!.innerHTML = "";
+    Array.from(document.getElementById("languages-inputs")!.children).forEach((input: Element) => {
+        const li = document.createElement("li");
+        li.textContent = (input as HTMLInputElement).value;
+        languagesList?.appendChild(li);
+    });
+
+    // Collect and display achievements
+    const achievementsList = document.getElementById("resume-achievements");
+    achievementsList!.innerHTML = "";
+    Array.from(document.getElementById("achievements-inputs")!.children).forEach((input: Element) => {
+        const li = document.createElement("li");
+        li.textContent = (input as HTMLInputElement).value;
+        achievementsList?.appendChild(li);
+    });
+
+    // Collect and display education
+    const educationList = document.getElementById("resume-education");
+    educationList!.innerHTML = "";
+    Array.from(document.getElementById("education-inputs")!.children).forEach((input: Element) => {
+        const li = document.createElement("li");
+        li.textContent = (input as HTMLInputElement).value;
+        educationList?.appendChild(li);
+    });
+
+    // Collect and display projects
+    const projectsList = document.getElementById("resume-projects");
+    projectsList!.innerHTML = "";
+    Array.from(document.getElementById("projects-inputs")!.children).forEach((input: Element) => {
+        const li = document.createElement("li");
+        li.textContent = (input as HTMLInputElement).value;
+        projectsList?.appendChild(li);
+    });
 }
