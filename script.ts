@@ -1,86 +1,160 @@
-function addSkill(): void {
-    const skillInput = document.createElement("input");
-    skillInput.type = "text";
-    skillInput.placeholder = "Enter a skill";
-    document.getElementById("skills-inputs")?.appendChild(skillInput);
+// Function to add a new experience entry
+function addExperience(): void {
+    const container = document.createElement("div");
+    container.classList.add("experience-entry");
+    container.innerHTML = `
+        <input type="text" placeholder="Job Title" class="experience-title">
+        <input type="text" placeholder="Company Name" class="experience-company">
+        <input type="date" placeholder="Start Date" class="experience-start">
+        <input type="date" placeholder="End Date" class="experience-end">
+        <textarea placeholder="Job Description" class="experience-description"></textarea>
+        <textarea placeholder="Key Achievements" class="experience-achievements"></textarea>
+        <input type="text" placeholder="Skills Used" class="experience-skills">
+    `;
+    document.getElementById("experience-inputs")?.appendChild(container);
 }
 
-function addLanguage(): void {
-    const languageInput = document.createElement("input");
-    languageInput.type = "text";
-    languageInput.placeholder = "Enter a language";
-    document.getElementById("languages-inputs")?.appendChild(languageInput);
-}
-
-function addAchievement(): void {
-    const achievementInput = document.createElement("input");
-    achievementInput.type = "text";
-    achievementInput.placeholder = "Enter an achievement";
-    document.getElementById("achievements-inputs")?.appendChild(achievementInput);
-}
-
+// Function to add a new education entry
 function addEducation(): void {
-    const educationInput = document.createElement("input");
-    educationInput.type = "text";
-    educationInput.placeholder = "Enter education detail";
-    document.getElementById("education-inputs")?.appendChild(educationInput);
+    const container = document.createElement("div");
+    container.classList.add("education-entry");
+    container.innerHTML = `
+        <input type="text" placeholder="Degree Name" class="education-degree">
+        <input type="text" placeholder="Institution Name" class="education-institution">
+        <input type="date" placeholder="End Date" class="education-end-date">
+    `;
+    document.getElementById("education-inputs")?.appendChild(container);
 }
 
+// Function to add a new skill entry
+function addSkill(): void {
+    const container = document.createElement("div");
+    container.classList.add("skill-entry");
+    container.innerHTML = `
+        <input type="text" placeholder="Skill Name" class="skill-name">
+        <select class="skill-level">
+            <option value="beginner">Beginner</option>
+            <option value="intermediate">Intermediate</option>
+            <option value="advanced">Advanced</option>
+        </select>
+        <input type="text" placeholder="Certification (if applicable)" class="skill-certification">
+    `;
+    document.getElementById("skills-inputs")?.appendChild(container);
+}
+
+// Function to add a new project entry
 function addProject(): void {
-    const projectInput = document.createElement("input");
-    projectInput.type = "text";
-    projectInput.placeholder = "Enter a project";
-    document.getElementById("projects-inputs")?.appendChild(projectInput);
+    const container = document.createElement("div");
+    container.classList.add("project-entry");
+    container.innerHTML = `
+        <input type="text" placeholder="Project Title" class="project-title">
+        <textarea placeholder="Description" class="project-description"></textarea>
+        <input type="text" placeholder="Technologies Used" class="project-technologies">
+        <input type="text" placeholder="Role in Project" class="project-role">
+        <input type="text" placeholder="Link to Project (if applicable)" class="project-link">
+    `;
+    document.getElementById("projects-inputs")?.appendChild(container);
 }
 
+// Function to add a new certification entry
+function addCertification(): void {
+    const container = document.createElement("div");
+    container.classList.add("certification-entry");
+    container.innerHTML = `
+        <input type="text" placeholder="Certification Name" class="certification-name">
+        <input type="text" placeholder="Certifying Organization" class="certification-organization">
+        <input type="date" placeholder="Date Obtained" class="certification-date">
+    `;
+    document.getElementById("certifications-inputs")?.appendChild(container);
+}
+
+// Function to add a new award entry
+function addAward(): void {
+    const container = document.createElement("div");
+    container.classList.add("award-entry");
+    container.innerHTML = `
+        <input type="text" placeholder="Award/Honor Name" class="award-name">
+        <input type="text" placeholder="Awarding Organization" class="award-organization">
+        <input type="date" placeholder="Date Received" class="award-date">
+    `;
+    document.getElementById("awards-inputs")?.appendChild(container);
+}
+
+// Function to add a new language entry
+function addLanguage(): void {
+    const container = document.createElement("div");
+    container.classList.add("language-entry");
+    container.innerHTML = `
+        <input type="text" placeholder="Language Name" class="language-name">
+        <select class="language-proficiency">
+            <option value="fluent">Fluent</option>
+            <option value="conversational">Conversational</option>
+            <option value="basic">Basic</option>
+        </select>
+    `;
+    document.getElementById("languages-inputs")?.appendChild(container);
+}
+
+// Function to add a new interest entry
+function addInterest(): void {
+    const container = document.createElement("div");
+    container.classList.add("interest-entry");
+    container.innerHTML = `
+        <input type="text" placeholder="Interest" class="interest-name">
+    `;
+    document.getElementById("interests-inputs")?.appendChild(container);
+}
+
+// Function to generate the resume display
 function generateResume(): void {
-    // Collect user info
-    (document.getElementById("resume-name") as HTMLElement).textContent = (document.getElementById("name") as HTMLInputElement).value;
-    (document.getElementById("resume-email") as HTMLElement).textContent = "Email: " + (document.getElementById("email") as HTMLInputElement).value;
-    (document.getElementById("resume-address") as HTMLElement).textContent = "Address: " + (document.getElementById("address") as HTMLInputElement).value;
+    // Info Section
+    const name = (document.getElementById("name") as HTMLInputElement).value;
+    const email = (document.getElementById("email") as HTMLInputElement).value;
+    const phone = (document.getElementById("phone") as HTMLInputElement).value;
+    const address = (document.getElementById("address") as HTMLInputElement).value;
+    const linkedin = (document.getElementById("linkedin") as HTMLInputElement).value;
+    const website = (document.getElementById("website") as HTMLInputElement).value;
+    const summary = (document.getElementById("summary") as HTMLTextAreaElement).value;
 
-    // Collect and display skills
-    const skillsList = document.getElementById("resume-skills");
-    skillsList!.innerHTML = "";
-    Array.from(document.getElementById("skills-inputs")!.children).forEach((input: Element) => {
-        const li = document.createElement("li");
-        li.textContent = (input as HTMLInputElement).value;
-        skillsList?.appendChild(li);
-    });
+    // Set Name and Summary
+    document.getElementById("resume-name")!.textContent = name;
+    document.getElementById("resume-summary")!.textContent = summary;
 
-    // Collect and display languages
-    const languagesList = document.getElementById("resume-languages");
-    languagesList!.innerHTML = "";
-    Array.from(document.getElementById("languages-inputs")!.children).forEach((input: Element) => {
-        const li = document.createElement("li");
-        li.textContent = (input as HTMLInputElement).value;
-        languagesList?.appendChild(li);
+    // Experience Section
+    const experienceInputs = document.querySelectorAll(".experience-entry");
+    const experienceSection = document.createElement("section");
+    experienceSection.innerHTML = "<h3>Experience</h3>";
+    experienceInputs.forEach(exp => {
+        const title = (exp.querySelector(".experience-title") as HTMLInputElement).value;
+        const company = (exp.querySelector(".experience-company") as HTMLInputElement).value;
+        const start = (exp.querySelector(".experience-start") as HTMLInputElement).value;
+        const end = (exp.querySelector(".experience-end") as HTMLInputElement).value;
+        const description = (exp.querySelector(".experience-description") as HTMLTextAreaElement).value;
+        const achievements = (exp.querySelector(".experience-achievements") as HTMLTextAreaElement).value;
+        const skills = (exp.querySelector(".experience-skills") as HTMLInputElement).value;
+        
+        const expDiv = document.createElement("div");
+        expDiv.innerHTML = `<p><strong>${title}</strong> at ${company} (${start} - ${end})</p><p>${description}</p><p>Achievements: ${achievements}</p><p>Skills Used: ${skills}</p>`;
+        experienceSection.appendChild(expDiv);
     });
+    document.getElementById("resume-sections")?.appendChild(experienceSection);
 
-    // Collect and display achievements
-    const achievementsList = document.getElementById("resume-achievements");
-    achievementsList!.innerHTML = "";
-    Array.from(document.getElementById("achievements-inputs")!.children).forEach((input: Element) => {
-        const li = document.createElement("li");
-        li.textContent = (input as HTMLInputElement).value;
-        achievementsList?.appendChild(li);
-    });
+    // Education, Skills, Projects, Certifications, Awards, Languages, and Interests Sections
+    // Repeat similar structure as above for each of these sections...
 
-    // Collect and display education
-    const educationList = document.getElementById("resume-education");
-    educationList!.innerHTML = "";
-    Array.from(document.getElementById("education-inputs")!.children).forEach((input: Element) => {
-        const li = document.createElement("li");
-        li.textContent = (input as HTMLInputElement).value;
-        educationList?.appendChild(li);
-    });
-
-    // Collect and display projects
-    const projectsList = document.getElementById("resume-projects");
-    projectsList!.innerHTML = "";
-    Array.from(document.getElementById("projects-inputs")!.children).forEach((input: Element) => {
-        const li = document.createElement("li");
-        li.textContent = (input as HTMLInputElement).value;
-        projectsList?.appendChild(li);
-    });
+    // Append completed sections to display area
+    document.getElementById("resume-sections")!.innerHTML = "";
+    document.getElementById("resume-sections")!.appendChild(experienceSection);
+    // ... Append other sections similarly
 }
+
+// Add Event Listeners for "Add More" Buttons
+document.querySelector("#experience-section button")?.addEventListener("click", addExperience);
+document.querySelector("#education-section button")?.addEventListener("click", addEducation);
+document.querySelector("#skills-section button")?.addEventListener("click", addSkill);
+document.querySelector("#projects-section button")?.addEventListener("click", addProject);
+document.querySelector("#certifications-section button")?.addEventListener("click", addCertification);
+document.querySelector("#awards-section button")?.addEventListener("click", addAward);
+document.querySelector("#languages-section button")?.addEventListener("click", addLanguage);
+document.querySelector("#interests-section button")?.addEventListener("click", addInterest);
+document.getElementById("generate-resume")?.addEventListener("click", generateResume);
