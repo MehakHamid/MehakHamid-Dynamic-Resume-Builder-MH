@@ -1,7 +1,6 @@
-// Add event listeners for "Add More" buttons and the "Generate Resume" button
+// Event listeners for dynamically adding sections
 document.getElementById("generate-resume").addEventListener("click", generateResume);
 
-// For dynamically adding new skills, experience, education, etc.
 document.getElementById("add-skill").addEventListener("click", addSkill);
 document.getElementById("add-experience").addEventListener("click", addExperience);
 document.getElementById("add-education").addEventListener("click", addEducation);
@@ -9,6 +8,7 @@ document.getElementById("add-language").addEventListener("click", addLanguage);
 document.getElementById("add-interest").addEventListener("click", addInterest);
 document.getElementById("add-award").addEventListener("click", addAward);
 
+// Dynamically add input fields for each section
 function addSkill() {
     const skillContainer = document.getElementById("skills-container");
     const skillHTML = `
